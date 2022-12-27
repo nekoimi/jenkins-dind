@@ -6,7 +6,7 @@ node {
     }
 
     stage('Build') {
-        docker.withRegistry('https://index.docker.io/v1', 'dockerhub_access') {
+        docker.withRegistry('', 'dockerhub_access') {
             docker.build("nekoimi/jenkins-plus:latest").push()
         }
     }
