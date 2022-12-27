@@ -1,14 +1,23 @@
 #!/usr/bin/groovy
 
 node {
+    def image = null
 
     stage('Checkout') {
         checkout scm
     }
 
     stage('Build') {
-        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_access') {
-            docker.build("nekoimi/jenkins-plus:latest").push()
+        image = docker.build("nekoimi/jenkins-plus:latest")
+    }
+
+    stage('Push') {
+        docker.withRegistry('https://docker.io', 'dockerhub_access') {
+            image.push()
         }
+    }
+
+    stage('Clean') {
+        cleanWs()
     }
 }
