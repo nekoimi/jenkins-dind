@@ -12,7 +12,7 @@ node {
     }
 
     stage('Push') {
-        docker.withRegistry('https://docker.io', 'dockerhub_access') {
+        docker.withRegistry('https://index.docker.io/v1', 'dockerhub_access') {
             image.push()
         }
     }
