@@ -1,4 +1,5 @@
 variables:
+  DOCKERHUB_URL: https://index.docker.io/v1/
   DOCKERHUB_IMAGE: nekoimi/jenkins-plus:latest
 
 stages:
@@ -12,7 +13,7 @@ build-job:
   tags:
     - docker
   script:
-    - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_ACCESS_TOKEN
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_TOKEN $DOCKERHUB_URL
     - docker build -t $DOCKERHUB_IMAGE .
 
 push-job:
