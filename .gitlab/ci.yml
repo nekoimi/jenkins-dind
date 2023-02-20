@@ -2,7 +2,8 @@ variables:
   DOCKERHUB_IMAGE: nekoimi/jenkins-plus:latest
 
 stages:
-  - build
+#  - build
+  - deploy
 
 build-job:
   stage: build
@@ -14,3 +15,16 @@ build-job:
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_TOKEN
     - docker build -t $DOCKERHUB_IMAGE .
     - docker push $DOCKERHUB_IMAGE
+
+deploy-job:
+  stage: deploy
+  only:
+    - master
+  tags:
+    - ssh
+    - deploy
+  script:
+    - pwd
+    - ls -al
+    - id
+    - hostname
