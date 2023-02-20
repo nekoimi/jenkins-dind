@@ -5,7 +5,7 @@ stages:
 #  - build
   - deploy
 
-build-job:
+build:
   stage: build
   only:
     - master
@@ -16,7 +16,7 @@ build-job:
     - docker build -t $DOCKERHUB_IMAGE .
     - docker push $DOCKERHUB_IMAGE
 
-deploy-job:
+deploy:
   stage: deploy
   only:
     - master
