@@ -3,20 +3,29 @@ variables:
 
 stages:
   - build
+  - push
   - deploy
 
-build-job:
+build-image:
   stage: build
   only:
     - master
   tags:
     - docker
   script:
-    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_TOKEN
     - docker build -t $DOCKERHUB_IMAGE .
+
+push-image:
+  stage: push
+  only:
+    - master
+  tags:
+    - docker
+  script:
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_TOKEN
     - docker push $DOCKERHUB_IMAGE
 
-deploy-job:
+deploy:
   stage: deploy
   only:
     - master
