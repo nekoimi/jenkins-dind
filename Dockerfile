@@ -1,5 +1,5 @@
 # debian 11 bullseye
-FROM jenkins/jenkins:latest-jdk11
+FROM jenkins/jenkins:2.391-jdk11
 
 LABEL maintainer="nekoimi <nekoimime@gmail.com>"
 
