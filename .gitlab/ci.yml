@@ -25,6 +25,4 @@ deploy-job:
     - deploy
   script:
     - cd $COMPOSE_DEPLOY_WORKSPACE/jenkins
-    - pwd
-    - ls -lah
     - docker compose up -d

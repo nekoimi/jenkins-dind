@@ -1,7 +1,9 @@
 # debian 11 bullseye
-FROM jenkins/jenkins:2.391-jdk11
+FROM jenkins/jenkins:latest-jdk11
 
 LABEL maintainer="nekoimi <nekoimime@gmail.com>"
+
+ARG DOCKER_VERSION="5:20.10.22~3-0~debian-bullseye"
 
 USER root
 
@@ -27,7 +29,7 @@ RUN add-apt-repository \
    stable"
 RUN set -ex \
     && apt-get update \
-    && apt-get -y install docker-ce=5:20.10.22~3-0~debian-bullseye
+    && apt-get -y install docker-ce=$DOCKER_VERSION
 RUN apt-get clean && usermod -aG docker jenkins
 
 USER jenkins
