@@ -2,21 +2,21 @@ variables:
   DOCKERHUB_IMAGE: nekoimi/jenkins-plus:latest
 
 stages:
-#  - build
+  - build
   - deploy
 
-#build:
-#  stage: build
-#  only:
-#    - master
-#  tags:
-#    - docker
-#  script:
-#    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_TOKEN
-#    - docker build -t $DOCKERHUB_IMAGE .
-#    - docker push $DOCKERHUB_IMAGE
+build-job:
+  stage: build
+  only:
+    - master
+  tags:
+    - docker
+  script:
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_TOKEN
+    - docker build -t $DOCKERHUB_IMAGE .
+    - docker push $DOCKERHUB_IMAGE
 
-deploy:
+deploy-job:
   stage: deploy
   only:
     - master
@@ -24,7 +24,7 @@ deploy:
     - ssh
     - deploy
   script:
+    - cd $COMPOSE_DEPLOY_WORKSPACE/jenkins
     - pwd
-    - ls -al
-    - id
-    - hostname
+    - ls -lah
+    - docker compose up -d
