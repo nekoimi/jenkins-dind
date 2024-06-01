@@ -5,16 +5,18 @@ LABEL maintainer="nekoimi <nekoimime@gmail.com>"
 
 USER root
 
-RUN echo \
-    "deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib \
-     deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib \
-     deb https://mirrors.aliyun.com/debian-security/ bullseye-security main \
-     deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main \
-     deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib \
-     deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib \
-     deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib \
-     deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib \
-    " > /etc/apt/sources.list
+RUN cat /etc/os-release
+
+#RUN echo \
+#    "deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib \
+#     deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib \
+#     deb https://mirrors.aliyun.com/debian-security/ bullseye-security main \
+#     deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main \
+#     deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib \
+#     deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib \
+#     deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib \
+#     deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib \
+#    " > /etc/apt/sources.list
 
 RUN set -ex \
     && apt-get update \
