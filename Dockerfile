@@ -7,8 +7,7 @@ USER root
 
 RUN set -ex \
     && cat /etc/os-release \
-    && sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-    && apt-get update \
+    && sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources \
     && apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
 
 RUN set -ex \
