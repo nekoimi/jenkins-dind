@@ -11,6 +11,9 @@ on:
       - README.md
       - example
       - LICENSE
+    schedule:
+      # https://crontab.cronhub.io/
+      - cron: '00 5 * * 1'
 
 jobs:
   build_and_push:
