@@ -7,12 +7,12 @@ USER root
 
 RUN set -ex \
     && cat /etc/os-release \
-    && if [ -f /etc/apt/sources.list ]; then \
-         sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
-        fi \
-    && if [ -f /etc/apt/sources.list.d/debian.sources ]; then \
-         sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources; \
-        fi \
+#    && if [ -f /etc/apt/sources.list ]; then \
+#         sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
+#        fi \
+#    && if [ -f /etc/apt/sources.list.d/debian.sources ]; then \
+#         sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources; \
+#        fi \
     && apt-get update
 
 RUN set -ex \
