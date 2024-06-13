@@ -1,3 +1,3 @@
 # jenkins-dind
 
-jenkins with docker in docker
+Jenkins Docker in Docker Image
