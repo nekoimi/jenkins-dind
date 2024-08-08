@@ -5,15 +5,13 @@ on:
   push:
     branches:
       - master
-    tags:
-      - "v*"
     paths-ignore:
       - README.md
       - example
       - LICENSE
-    schedule:
-      # https://crontab.cronhub.io/
-      - cron: '00 5 * * 1'
+  schedule:
+    # https://crontab.cronhub.io/
+    - cron: '00 5 * * 1'
 
 jobs:
   build_and_push:
