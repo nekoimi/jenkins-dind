@@ -1,6 +1,6 @@
 # jenkins-dind
 
-Jenkins Docker in Docker Image
+Jenkins Docker in Docker Image (每周构建，使用最新TLS版本)
 
 ### Run
 
