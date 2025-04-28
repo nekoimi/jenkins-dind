@@ -39,6 +39,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract Jenkins version
+        id: get_jenkins_version
+        run: |
+          jenkins_version=$(docker run --rm docker.io/jenkins/jenkins:lts-jdk17 unzip -p /usr/share/jenkins/jenkins.war META-INF/MANIFEST.MF | grep Jenkins-Version | awk '{print $2}')
+          echo "Extracted Jenkins version: $jenkins_version"
+          echo "jenkins_version=$jenkins_version" >> $GITHUB_OUTPUT
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
@@ -48,10 +55,12 @@ jobs:
             ghcr.io/${{ github.repository }}
           tags: |
             type=raw,value=latest
+            type=raw,value={{ steps.get_jenkins_version.outputs.jenkins_version }}
             type=schedule,pattern={{date 'YYYY-MM-DD' tz='Asia/Shanghai'}}
 
       - name: Change metadata
         run: |
+          echo "${{ steps.get_jenkins_version.outputs.jenkins_version }}" > JENKINS_VERSION
           echo "${{ steps.meta.outputs.json }}" > docker-metadata.json
 
       - name: Auto commit
