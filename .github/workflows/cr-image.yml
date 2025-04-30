@@ -55,7 +55,7 @@ jobs:
             ghcr.io/${{ github.repository }}
           tags: |
             type=raw,value=latest
-            type=raw,value={{ steps.get_jenkins_version.outputs.jenkins_version }}
+            type=raw,value=${{ steps.get_jenkins_version.outputs.jenkins_version }}
             type=schedule,pattern={{date 'YYYY-MM-DD' tz='Asia/Shanghai'}}
 
       - name: Change metadata
