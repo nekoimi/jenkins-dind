@@ -7,13 +7,13 @@ USER root
 
 RUN set -ex \
     && cat /etc/os-release \
-#    && if [ -f /etc/apt/sources.list ]; then \
-#         sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
-#        fi \
-#    && if [ -f /etc/apt/sources.list.d/debian.sources ]; then \
-#         sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources; \
-#        fi \
     && apt-get update
+
+# Custom Plugins
+COPY --chown=jenkins:jenkins plugins.txt /usr/share/jenkins/ref/plugins.txt
+# Installing Custom Plugins
+RUN set -ex \
+    && jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 
 RUN set -ex \
     && apt-get install -y ca-certificates curl \
