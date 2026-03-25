@@ -6,7 +6,7 @@ Jenkins Docker in Docker 镜像，集成 Docker CE，支持在 Jenkins 容器内
 
 ## 特性
 
-- 基于 Jenkins LTS (JDK17) 版本
+- 基于 Jenkins LTS (JDK21) 版本
 - 预装 Docker CE，支持 DinD (Docker in Docker)
 - 支持自定义插件安装
 - 每周自动构建，保持最新 TLS 版本
@@ -14,9 +14,8 @@ Jenkins Docker in Docker 镜像，集成 Docker CE，支持在 Jenkins 容器内
 
 ## 版本信息
 
-- **Jenkins 版本**: 2.541.2
-- **基础镜像**: `jenkins/jenkins:lts-jdk17`
-- **操作系统**: Debian 12 (Bookworm)
+- **Jenkins 版本**: [JENKINS_VERSION](JENKINS_VERSION)
+- **基础镜像**: `jenkins/jenkins:lts-jdk21`
 
 ## 快速开始
 

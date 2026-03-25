@@ -1,5 +1,4 @@
-# debian 12 bookworm
-FROM jenkins/jenkins:lts-jdk17
+FROM jenkins/jenkins:lts-jdk21
 
 LABEL maintainer="nekoimi <nekoimime@gmail.com>"
 
